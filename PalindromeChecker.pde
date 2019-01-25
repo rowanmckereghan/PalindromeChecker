@@ -4,7 +4,13 @@ public void setup()
   println("there are " + lines.length + " lines");
   for (int i=0; i < lines.length; i++) 
   {
-    if(palindrome(lines[i])==true)
+    String f = lines[i];
+    f = f.replaceAll(" ", "");
+    f = f.replaceAll("!", "");
+    f = f.replaceAll("'", "");
+    f = f.replaceAll(",", "");
+    f = f.toLowerCase();
+    if(isPalindrome(f)==true)
     {
       println(lines[i] + " IS a palindrome.");
     }
@@ -13,17 +19,20 @@ public void setup()
       println(lines[i] + " is NOT a palindrome.");
     }
   }
-}
-public boolean palindrome(String word)
-{
-  //your code here
-  return false;
-}
-public String reverse(String str)
-{
-    String sNew = new String();
-    //your code here
-    return sNew;
+} 
+public boolean isPalindrome(String sWord){
+  if (sWord.equals(reverse(sWord)))
+    return true;
+  else
+    return false;
 }
 
+public String reverse(String sWord){
+  String g = "";
+  for (int i = 0; i < sWord.length(); i++)
+  {
+    g = g + sWord.substring(sWord.length() - (i + 1), sWord.length() - i);
+  }
+  return g;
+}
 
